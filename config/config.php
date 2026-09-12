@@ -3,6 +3,23 @@ declare(strict_types=1);
 
 /*
 |--------------------------------------------------------------------------
+| Environment
+|--------------------------------------------------------------------------
+|
+| Change this to 'production' when deploying to your live server.
+|
+*/
+
+define('APP_ENV', 'local');
+
+// Live server တင်တဲ့အချိန်မှာ
+// define('APP_ENV', 'production');
+
+$isProduction = (APP_ENV === 'production');
+
+
+/*
+|--------------------------------------------------------------------------
 | Site
 |--------------------------------------------------------------------------
 */
@@ -17,6 +34,14 @@ define('BASE_URL', '/myPortfolio_SLH/');
 |--------------------------------------------------------------------------
 | Database
 |--------------------------------------------------------------------------
+|
+| Local development:
+|   DB_USER = root
+|   DB_PASS = ''
+|
+| Production:
+|   Replace these with your hosting database credentials.
+|
 */
 
 define('DB_HOST', '127.0.0.1');
@@ -58,13 +83,95 @@ date_default_timezone_set('Asia/Bangkok');
 
 /*
 |--------------------------------------------------------------------------
-| Session
+| Error Handling
 |--------------------------------------------------------------------------
 |
-| Start session only when no session is active.
+| Never display PHP errors publicly in production.
+| Errors should be logged instead.
 |
 */
 
+if ($isProduction) {
+
+    ini_set('display_errors', '0');
+    ini_set('display_startup_errors', '0');
+    ini_set('log_errors', '1');
+
+} else {
+
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    ini_set('log_errors', '1');
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Session Security
+|--------------------------------------------------------------------------
+*/
+
 if (session_status() === PHP_SESSION_NONE) {
+
+    /*
+    | HTTPS detection
+    |
+    | On production, the site should always use HTTPS.
+    |
+    */
+
+    $isHttps = (
+        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        ||
+        (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443)
+    );
+
+
+    /*
+    | Session cookie configuration
+    */
+
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => BASE_URL,
+        'domain' => '',
+        'secure' => $isHttps,
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+
+
     session_start();
 }
+
+
+/*
+|--------------------------------------------------------------------------
+| Security Headers
+|--------------------------------------------------------------------------
+|
+| These headers improve browser-side security.
+|
+*/
+
+if (!headers_sent()) {
+
+    header('X-Content-Type-Options: nosniff');
+
+    header('X-Frame-Options: SAMEORIGIN');
+
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+
+    header(
+        'Permissions-Policy: camera=(), microphone=(), geolocation=()'
+    );
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Application Constants
+|--------------------------------------------------------------------------
+*/
+
+define('IS_PRODUCTION', $isProduction);
