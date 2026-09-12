@@ -1,0 +1,169 @@
+@media (max-width: 1000px) {
+
+    .main-nav {
+        gap: 15px;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-profile {
+        /* justify-content: flex-start; */
+        margin-top: 30px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-box {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .section-heading {
+        grid-template-columns: 45px 1fr;
+        gap: 15px;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 95px;
+        left: 24px;
+        right: 24px;
+
+        display: none;
+        flex-direction: column;
+
+        padding: 25px;
+
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+
+        box-shadow: var(--shadow);
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 130px;
+    }
+
+    .hero-title {
+        font-size: clamp(65px, 18vw, 110px);
+    }
+
+    .hero-meta {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .projects-grid,
+    .education-grid,
+    .certification-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        margin-left: 15px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding-left: 40px;
+    }
+
+    .timeline-content h3 {
+        font-size: 30px;
+    }
+
+    .contact-box {
+        padding: 35px 25px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .container {
+        width: min(
+            calc(100% - 30px),
+            var(--container)
+        );
+    }
+
+    .nav-container {
+        height: 58px;
+    }
+
+    .hero {
+        padding-top: 110px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .hero-meta strong {
+        font-size: 17px;
+    }
+
+    .hero-meta span {
+        font-size: 9px;
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+
+    .project-card {
+        min-height: 400px;
+        padding: 25px;
+    }
+
+    .project-content h3 {
+        font-size: 31px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

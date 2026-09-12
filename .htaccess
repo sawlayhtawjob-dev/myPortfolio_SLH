@@ -1,0 +1,23 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Protect sensitive directories
+RewriteRule ^config/ - [F,L]
+RewriteRule ^database/ - [F,L]
+RewriteRule ^includes/ - [F,L]
+
+# Protect SQL files
+<FilesMatch "\.(sql|log|ini)$">
+    Require all denied
+</FilesMatch>
+
+# Default charset
+AddDefaultCharset UTF-8
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
