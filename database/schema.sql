@@ -46,7 +46,7 @@ CREATE TABLE profile (
     location VARCHAR(150),
     portfolio_url VARCHAR(255),
     github_url VARCHAR(255),
-    profile_image VARCHAR(255) DEFAULT 'assets/images/profile.jpg',
+    profile_image VARCHAR(255) DEFAULT 'assets/images/profile.jpeg',
     cv_file VARCHAR(255) DEFAULT 'assets/cv/cv.pdf',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP
@@ -155,8 +155,6 @@ CREATE TABLE messages (
 --
 -- IMPORTANT:
 -- Change this password after installation.
---
--- bcrypt hash below is for "password".
 -- =========================================================
 
 INSERT INTO admins (
@@ -164,7 +162,7 @@ INSERT INTO admins (
     password_hash
 ) VALUES (
     'admin',
-    '$2y$10$92IXUNpkjO0rOQ0Y3sM4h3O9G8gk9r8n8Q7G9pW9Z8n1b9X9L7L7e'
+    '$2y$12$SXXQzvZuJLnvLO9VkDk6wOiIWt2lPqINrPFSmunJ0rvMVplCmQdtu'
 );
 
 
@@ -186,13 +184,13 @@ INSERT INTO profile (
 ) VALUES (
     'SAWLAYHTAW',
     'Web Developer / Full-Stack Developer',
-    'Results-driven Web & Full-Stack Developer with 3+ years of experience at Arise Myanmar Co., Ltd. Specialized in end-to-end web development, custom WordPress solutions, PHP, ReactJS, and PSD-to-Web responsive designs. Experienced in managing Japanese municipal sites, CMS data migration (データ移行), and cross-platform app testing with Flutter. ITPEC (IP Test) certified with conversational Japanese proficiency (JLPT N4).',
+    'Results-driven Web & Full-Stack Developer with professional experience in web development, custom WordPress solutions, PHP, ReactJS, responsive UI development, CMS management, web maintenance, CMS data migration, and cross-platform application testing with Flutter. Currently working as a Freelance Web Developer, developing database-driven web applications and custom CMS solutions. ITPEC (IP Test) certified with conversational Japanese proficiency (JLPT N4).',
     '+66 81 402 6913',
     'sawlayhtaw.job@gmail.com',
     'BangPhli, SamutPrakan, Thailand',
     'https://sawlayhtaw.great-site.net',
     'https://github.com/sawlayhtawjob-dev',
-    'assets/images/profile.jpg',
+    'assets/images/profile.jpeg',
     'assets/cv/cv.pdf'
 );
 
@@ -235,13 +233,24 @@ INSERT INTO projects
 VALUES
 
 (
+    'Personal Portfolio & Content Management System',
+    'Freelance / Self-Developed',
+    'A modern, responsive personal portfolio website built with a custom PHP and MySQL-based content management system. The project combines a professional portfolio experience with an administration system that allows content to be managed without directly editing the website code.',
+    'PHP, MySQL, JavaScript, HTML5, CSS3, PDO',
+    'https://sawlayhtaw.great-site.net',
+    '',
+    1,
+    1
+),
+
+(
     'Bionly',
     'Web + Cross-Platform Support',
     'Maintained web applications and supported Flutter cross-platform testing across iOS, Android, and Windows for bionly.jp.',
     'Web Development, Flutter, Cross-Platform Testing',
     'https://bionly.jp',
     '',
-    1,
+    2,
     1
 ),
 
@@ -252,18 +261,18 @@ VALUES
     'PHP, WordPress, Custom Theme, Backend',
     'https://myanmar.arise.co.jp',
     '',
-    2,
+    3,
     1
 ),
 
 (
     'Japanese Municipal Websites',
     'Frontend + CMS + Data Migration',
-    'Converted Photoshop PSD designs into responsive web interfaces and managed legacy site data migration, content updates, and CMS maintenance for Japanese municipal websites.',
+    'Converted Photoshop PSD designs into responsive web interfaces and managed legacy site data migration (データ移行), content updates, and CMS maintenance for Japanese municipal websites.',
     'HTML5, CSS3, JavaScript, CMS, PSD to Web, Data Migration',
     'https://city.nobeoka.miyazaki.jp',
     '',
-    3,
+    4,
     1
 ),
 
@@ -274,7 +283,7 @@ VALUES
     'Power Apps, Power Automate, Workflow Automation',
     '',
     '',
-    4,
+    5,
     1
 );
 
@@ -283,29 +292,47 @@ VALUES
 -- EXPERIENCE
 -- =========================================================
 
-INSERT INTO experience (role, company, period, description, sort_order) VALUES
-('Freelance Web Developer', 'Self-Employed / Freelance', '2026 – Present',
-'Develop responsive web applications using PHP, MySQL, HTML5, CSS3, and JavaScript. Build custom CMS and admin dashboards with CRUD-based content management. Develop responsive interfaces with Light/Dark Mode, animations, and interactive components. Manage website content, profile/CV files, and project assets through administrative interfaces.',
-1);
-
 INSERT INTO experience
 (role, company, period, description, sort_order)
 VALUES
 
 (
+    'Freelance Web Developer',
+    'Self-Employed / Freelance',
+    '2026 – Present',
+    'Building responsive, database-driven web applications and custom CMS solutions with a focus on clean architecture, responsive interfaces, and practical content management systems.
+
+What I work on:
+- Develop responsive web applications using PHP, MySQL, HTML5, CSS3, and JavaScript.
+- Build custom CMS and admin dashboard solutions for managing website content.
+- Implement CRUD-based content management for projects, skills, experience, education, and certifications.
+- Develop responsive interfaces with Light/Dark Mode, animations, and interactive components.
+- Manage project assets, profile content, CV files, and other website resources through administrative interfaces.',
+    1
+),
+
+(
     'Programmer',
     'Arise Myanmar Co., Ltd.',
     'July 2021 – March 2024',
-    'Front-End & CMS Development (Japan Municipal Sites): Converted Photoshop (PSD) designs into responsive web interfaces and managed legacy site data migration (データ移行), content updates, and CMS maintenance for Japanese municipal websites (e.g., city.nobeoka.miyazaki.jp).\n\nWeb & Cross-Platform Support: Maintained web applications and supported Flutter cross-platform testing across iOS, Android, and Windows for bionly.jp.\n\nFull-Stack WordPress Development: Developed myanmar.arise.co.jp from scratch, managing full-stack architecture, custom themes, and backend integration.\n\nLow-Code Automation: Researched and implemented internal workflow tools using Microsoft Power Apps and Power Automate.',
-    1
+    'Front-End & CMS Development (Japan Municipal Sites): Converted Photoshop (PSD) designs into responsive web interfaces and managed legacy site data migration (データ移行), content updates, and CMS maintenance for Japanese municipal websites (e.g., city.nobeoka.miyazaki.jp).
+
+Web & Cross-Platform Support: Maintained web applications and supported Flutter cross-platform testing across iOS, Android, and Windows for bionly.jp.
+
+Full-Stack WordPress Development: Developed myanmar.arise.co.jp from scratch, managing full-stack architecture, custom themes, and backend integration.
+
+Low-Code Automation: Researched and implemented internal workflow tools using Microsoft Power Apps and Power Automate.',
+    2
 ),
 
 (
     'Front-End Web Developer Intern',
     'Arise Myanmar Co., Ltd.',
     'May 2019 – February 2020',
-    'CMS Data Migration (データ移行): Executed web system data migration and content edits to maintain updated site structures.\n\nWordPress & PHP Development: Gained hands-on experience in WordPress theme customization, PHP development, and core web architecture.',
-    2
+    'CMS Data Migration (データ移行): Executed web system data migration and content edits to maintain updated site structures.
+
+WordPress & PHP Development: Gained hands-on experience in WordPress theme customization, PHP development, and core web architecture.',
+    3
 );
 
 
