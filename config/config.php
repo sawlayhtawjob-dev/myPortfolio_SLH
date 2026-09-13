@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 define('APP_ENV', 'local');
 
-// Live server တင်တဲ့အချိန်မှာ
-// define('APP_ENV', 'production');
 
 $isProduction = (APP_ENV === 'production');
 
