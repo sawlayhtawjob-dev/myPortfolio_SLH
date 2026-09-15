@@ -1,3 +1,12 @@
+/* =========================================================
+   RESPONSIVE LAYOUT
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   TABLET / SMALL DESKTOP
+   --------------------------------------------------------- */
+
 @media (max-width: 1000px) {
 
     .main-nav {
@@ -9,7 +18,6 @@
     }
 
     .hero-profile {
-        /* justify-content: flex-start; */
         margin-top: 30px;
     }
 
@@ -22,8 +30,16 @@
         grid-template-columns: 1fr;
         gap: 50px;
     }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
+
+/* ---------------------------------------------------------
+   TABLET / MOBILE NAVIGATION
+   --------------------------------------------------------- */
 
 @media (max-width: 800px) {
 
@@ -36,6 +52,9 @@
         gap: 15px;
     }
 
+
+    /* Navigation */
+
     .main-nav {
         position: fixed;
         top: 95px;
@@ -44,6 +63,10 @@
 
         display: none;
         flex-direction: column;
+        align-items: stretch;
+
+        max-height: calc(100dvh - 120px);
+        overflow-y: auto;
 
         padding: 25px;
 
@@ -52,15 +75,27 @@
         border-radius: 20px;
 
         box-shadow: var(--shadow);
+
+        -webkit-overflow-scrolling: touch;
     }
 
     .main-nav.open {
         display: flex;
     }
 
+    .main-nav a {
+        width: 100%;
+        padding: 12px 10px;
+    }
+
     .menu-toggle {
         display: block;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
+
+
+    /* Hero */
 
     .hero {
         padding-top: 130px;
@@ -68,6 +103,7 @@
 
     .hero-title {
         font-size: clamp(65px, 18vw, 110px);
+        line-height: 0.9;
     }
 
     .hero-meta {
@@ -75,11 +111,17 @@
         flex-wrap: wrap;
     }
 
+
+    /* Grid sections */
+
     .projects-grid,
     .education-grid,
     .certification-grid {
         grid-template-columns: 1fr;
     }
+
+
+    /* Experience timeline */
 
     .timeline {
         margin-left: 15px;
@@ -95,11 +137,18 @@
         font-size: 30px;
     }
 
+
+    /* Contact */
+
     .contact-box {
         padding: 35px 25px;
     }
 }
 
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
 
 @media (max-width: 550px) {
 
@@ -110,16 +159,39 @@
         );
     }
 
+
+    /* Navigation */
+
     .nav-container {
         height: 58px;
     }
+
+    .main-nav {
+        top: 78px;
+        left: 15px;
+        right: 15px;
+
+        padding: 20px;
+
+        border-radius: 18px;
+
+        max-height: calc(100dvh - 95px);
+    }
+
+
+    /* Hero */
 
     .hero {
         padding-top: 110px;
     }
 
+    .hero-title {
+        font-size: clamp(56px, 17vw, 90px);
+    }
+
     .hero-description {
         font-size: 14px;
+        line-height: 1.8;
     }
 
     .hero-buttons {
@@ -131,9 +203,12 @@
         width: 100%;
     }
 
+
+    /* Hero statistics */
+
     .hero-meta {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
     }
 
@@ -143,11 +218,19 @@
 
     .hero-meta span {
         font-size: 9px;
+        line-height: 1.4;
     }
+
+
+    /* Profile */
 
     .profile-card {
         width: 100%;
+        max-width: 100%;
     }
+
+
+    /* Projects */
 
     .project-card {
         min-height: 400px;
@@ -156,14 +239,139 @@
 
     .project-content h3 {
         font-size: 31px;
+        overflow-wrap: anywhere;
     }
+
+
+    /* Forms */
 
     .form-grid {
         grid-template-columns: 1fr;
     }
 
+
+    /* Footer */
+
     .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL PHONES
+   --------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+    }
+
+    .section-heading {
+        grid-template-columns: 32px 1fr;
+        gap: 10px;
+    }
+
+    .section-number {
+        font-size: 11px;
+    }
+
+    .section-title {
+        font-size: clamp(32px, 10vw, 46px);
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding-top: 100px;
+    }
+
+    .hero-title {
+        font-size: clamp(50px, 16vw, 75px);
+    }
+
+    .hero-meta {
+        gap: 8px;
+    }
+
+    .hero-meta strong {
+        font-size: 15px;
+    }
+
+    .hero-meta span {
+        font-size: 8px;
+    }
+
+
+    /* Cards */
+
+    .project-card {
+        min-height: 360px;
+        padding: 20px;
+    }
+
+    .project-content h3 {
+        font-size: 27px;
+    }
+
+    .timeline-content h3 {
+        font-size: 26px;
+    }
+
+
+    /* Contact */
+
+    .contact-box {
+        padding: 28px 20px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        -webkit-animation-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+
+        -webkit-animation-iteration-count: 1 !important;
+        animation-iteration-count: 1 !important;
+
+        -webkit-transition-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   TOUCH DEVICES
+   --------------------------------------------------------- */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .btn,
+    .main-nav a,
+    .project-card,
+    .social-link {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .project-card:hover {
+        transform: none;
     }
 }
